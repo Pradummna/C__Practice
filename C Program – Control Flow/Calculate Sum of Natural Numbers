@@ -1,0 +1,66 @@
+// Note: I solve this problem using four different approaches
+// for loop, while loop, do while loop, function recursion
+
+//Using for loop
+#include <stdio.h>
+int main()
+{
+    int data, sum = 0, i;
+    printf("Enter the natural numbers term: ");
+    scanf("%d",&data);
+    for(i=0; i<=data; i++) {
+        sum = sum + i;
+    } 
+    printf("The sum of %d natural numbers are: %d",data, sum);
+    return 0;
+}
+
+// Using while loop
+#include <stdio.h>
+int main()
+{
+    int data, sum = 0, i = 0;
+    printf("Enter the natural numbers term: ");
+    scanf("%d",&data);
+    while(i<=data) {
+        sum = sum + i;
+        i++;
+    } 
+    printf("The sum of %d natural numbers are: %d",data, sum);
+    return 0;
+}
+
+// Using do while loop
+#include <stdio.h>
+int main()
+{
+    int data, sum = 0, i = 0;
+    printf("Enter the natural numbers term: ");
+    scanf("%d",&data);
+    do {
+        sum = sum + i;
+        i++;
+    } while(i<=data); 
+    printf("The sum of %d natural numbers are: %d",data, sum);
+    return 0;
+}
+
+// Using recursion
+ #include<stdio.h>
+int sum_of_natural_number(int n);
+int main() {
+    int data;
+    printf("Enter the natural numbers term: ");
+    scanf("%d",&data);
+    printf("The sum of %d natural numbers are: %d", data, sum_of_natural_number(data));
+    return 0;
+}
+
+int sum_of_natural_number(int n) {
+    if(n != 0) {
+        return n + sum_of_natural_number(n - 1);
+    } else {
+        return n;
+    }
+}
+
