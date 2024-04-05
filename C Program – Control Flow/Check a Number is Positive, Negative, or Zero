@@ -1,0 +1,32 @@
+// Program to check the number is positive, negative or zero
+#include<stdio.h>
+void isZero(int n);
+void isPositive(int n);
+void isNegative(int n);
+
+int main()
+{
+    int data;
+    printf("Enter a number: ");
+    scanf("%d", &data);
+    if (data == 0) {
+        isZero(data);
+    } else if(data < 0) {
+        isNegative(data);
+    } else if(data > 0){
+        isPositive(data);
+    } else {
+	return false;
+    }
+    return 0;
+}
+
+void isZero(int n) {
+    printf("Value is zero %d", n);
+}
+void isPositive(int n) {
+    printf("Value is positive %d", n);
+}
+void isNegative(int n) {
+    printf("Value is negative %d", n);
+}
