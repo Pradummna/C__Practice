@@ -1,0 +1,21 @@
+#include<stdio.h>
+int main() {
+    int oringinalNum, rev, num; 
+    printf("Enter the number: ");
+    scanf("%d",&oringinalNum);
+     rev = 0;
+     num = oringinalNum;
+    
+    while(num != 0) {
+        int rem = num % 10;
+        rev = rev * 10 + rem;
+        num = num / 10;
+    } 
+    
+    if(oringinalNum == rev) {
+        printf("The given number is plaindrome because\n %d matches %d", oringinalNum, rev);
+    } else {
+        printf("The given number is not plaindrome because\n %d not matched with %d", oringinalNum, rev);
+    }
+    return 0;
+}
