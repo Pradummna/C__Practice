@@ -1,0 +1,40 @@
+#include<stdio.h>
+typedef struct complexNumber {
+    int real;
+    int img;
+} complex;
+
+complex add(complex x, complex y);
+
+int main() {
+    complex numA, numB, sum;
+    // 1st complex number
+    printf("Enter 1st complex real number: ");
+    scanf("%d", &numA.real);
+    printf("Enter 1st complex imaginary number: ");
+    scanf("%d", &numA.img);
+    
+    // 2nd complex number
+    printf("Enter 2nd complex real number: ");
+    scanf("%d", &numB.real);
+    printf("Enter 2nd complex imaginary number: ");
+    scanf("%d", &numB.img);
+    
+     // Print first complex number
+    printf("\n a = %d + %di", numA.real, numA.img);
+ 
+    // print second complex number
+    printf("\n b = %d + %di", numB.real, numB.img);
+    
+    sum = add(numA, numB);
+    printf("\n sum = %d + %di", sum.real, sum.img);
+    
+    return 0;
+}
+
+complex add(complex x, complex y) {
+    complex add;
+    add.real = x.real + y.real;
+    add.img = x.img + y.img;
+    return(add);
+}
