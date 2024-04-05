@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<math.h>  
+
+int main() {
+    double p, t, r;
+    printf("Enter Rincipal of Intrest: ");
+     scanf("%lf",&p);
+    printf("\nEnter Intrest Rate: ");
+     scanf("%lf",&r);
+    printf("\nEnter Time: ");
+    scanf("%lf",&t);
+   
+    double amount =  p * pow(1 + r/100, t);
+    double c_a = amount - p;
+    printf("Compound Intrest is: %lf",c_a);
+    return 0;
+}
