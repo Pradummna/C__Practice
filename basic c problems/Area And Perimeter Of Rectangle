@@ -1,0 +1,16 @@
+// Formula of area and perimeter
+// Area = length*breadth => l*b 
+// Perimeter = 2*(length + breadth) => 2*(l+b) 
+
+#include<stdio.h>
+int main() {
+    int l, b;
+    printf("l (Length): ");
+    scanf("%d",&l);
+    printf("b (breadth): ");
+    scanf("%d",&b);
+    int area_of_rectangle = l*b;
+    int perimeter = 2*(l+b);
+    printf("Area: %d and Perimeter: %d", area_of_rectangle, perimeter);
+    return 0;
+}
