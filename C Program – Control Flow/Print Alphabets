@@ -1,0 +1,31 @@
+// Program to print alphabets A to Z in upper or lower case
+#include<stdio.h>
+void print_AtoZ(char data);
+void print_aToz(char data);
+
+int main() {
+    char option;
+    printf("Enter u for uppercase A to Z or l for lowercase a to z: ");
+    scanf("%c", &option);
+    
+    if(option == 'u') {
+        print_AtoZ(option);
+    } else if (option == 'l') {
+        print_aToz(option);
+    } else {
+        printf("Unvalid input");
+    }
+    return 0;
+}
+
+void print_AtoZ(char data) {
+    for(int i='A'; i<='Z'; i++) {
+        printf("%c\n", i);
+    }
+}
+
+void print_aToz(char data) {
+    for(int i='a'; i<='z'; i++) {
+        printf("%c\n", i);
+    }
+}
