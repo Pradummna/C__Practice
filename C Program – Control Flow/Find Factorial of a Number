@@ -1,0 +1,38 @@
+// Note: This problem was solved by using two approaches: Recursion and Loops
+
+// using recursion
+#include<stdio.h>
+int fact(int n);
+int main() {
+    int data;
+    printf("Enter the factorial term: ");
+    scanf("%d", &data);
+    printf("The factorial of %d is: %d",data, fact(data));
+    return 0;
+}
+
+int fact(int n) {
+    if(n == 1) {
+        return 1;
+    } else {
+        return n * fact(n - 1);
+    }
+}
+
+// using loop
+#include<stdio.h>
+int fact(int n);
+int main() {
+    int data;
+    printf("Enter the factorial term: ");
+    scanf("%d", &data);
+    printf("The factorial of %d term is: %d", data, fact(data));
+    return 0;
+}
+
+int fact(int n) {
+    int fact = 1;
+    for(int i=2; i<=n; i++) {
+        fact = fact * i;
+    } return fact;
+}
