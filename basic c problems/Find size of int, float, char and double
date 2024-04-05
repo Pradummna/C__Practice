@@ -1,0 +1,14 @@
+#include <stdio.h>
+int main()
+{
+    int intSize;
+    float floatSize;
+    double doubleSize;
+    char charSize;
+    
+    printf("Size of int is: %ld", sizeof(intSize));
+    printf("\nSize of float is: %ld", sizeof(floatSize));
+    printf("\nSize of double is: %ld", sizeof(doubleSize));
+    printf("\nSize of char is: %ld", sizeof(charSize));
+    return 0;
+}
