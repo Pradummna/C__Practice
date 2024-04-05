@@ -1,0 +1,41 @@
+// Note: This problem has two solution: One for digits 3 and another one for digits N
+
+// for 3 digits
+#include<stdio.h>
+int main() {
+    int num, originalNum, rem, result = 0;
+    printf("Enter three digit number: ");
+    scanf("%d", &num);
+    originalNum = num;
+    while(originalNum != 0) {
+        // contain the last digit from the given value
+        rem = originalNum % 10;
+        result += rem * rem * rem;
+        // remove the last digit from the number
+        originalNum = originalNum / 10;
+    }
+    if (result == num) {
+        printf("This is an Armstrong nubmer:%d match %d", num, result);
+    } else {
+        printf("This is not an Armstrong number:%d not match %d", num, result);
+    }
+    return 0;
+}
+
+// for n digits
+#include<stdio.h>
+#include<math.h>
+int getDigit(int value); 
+int isArmstrong(int value);
+
+int main() {
+    int number;
+    printf("Enter a value: ");
+    scanf("%d",&number);
+    if(isArmstrong(number) == 1) {
+        printf("%d is Armastrong number",number);
+    } else {
+        printf("%d is not an Armastrong number",number);
+    }
+    return 0;
+}
