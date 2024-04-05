@@ -39,3 +39,30 @@ int main() {
     }
     return 0;
 }
+
+// get the digit from the given number
+int getDigit(int value) {
+    int n = 0;
+    while(value) {
+        n++;
+        value = value / 10;
+    } return n;
+}
+// check is the number is Armastrong or not
+int isArmstrong(int value) {
+    int n = getDigit(value); 
+    int temp = value, sum=0;
+    
+    while(temp) {
+        int r = temp % 10;
+        sum += pow(r, n); 
+        // that means the n value will multiplied by remainder value r times 
+        temp = temp / 10;
+    }
+    
+    if(sum == value) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
