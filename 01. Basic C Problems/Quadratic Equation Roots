@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+void findRoots(int a, int b, int c);
+int main() {
+    int a, b, c;
+    printf("Enter first input: ");
+    scanf("%d",&a);
+    printf("Enter second input: ");
+    scanf("%d",&b);
+    printf("Enter third input: ");
+    scanf("%d",&c);
+    findRoots(a, b, c); 
+    return 0;
+}
+
+void findRoots(int a, int b, int c) {
+    if(a == 0) {
+        // if a is 0 then the equation is not quadratic
+        printf("Invaild");
+        return;
+    }
+    // using this formula Discriminant(D) = b2 - 4ac;
+    int d = b * b - 4 * a * c;
+    double sqrVal = sqrt(abs(d));
+    if(d > 0) {
+        float f1 = (-(double)b + sqrVal) / (2 * a);
+        float f2 = (-(double)b - sqrVal) / (2 * a);
+        printf("Roots are real and different\n");
+        printf("%f\n%f", f1,f2);
+    }
+    else if (d == 0) {
+        float f = -(double)b / (2 * a);
+        printf("Roots are real and same\n"); 
+        printf("%f", f); 
+    }
+    else {
+        float f1 = -(double)b / (2 * a);
+        float f2 = sqrVal / (2 * a);
+        float f3 = -(double)b / (2 * a);
+        float f4 = sqrVal / (2 * a);
+        printf("Roots are complex\n"); 
+        printf("%f + i%f\n%f - i%f",f1, f2, f3, f4);
+    }
+}
