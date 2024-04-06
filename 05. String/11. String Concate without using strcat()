@@ -1,0 +1,8 @@
+#include<stdio.h>
+int main() {
+  char str1[100];
+  printf("Enter string:\n");
+  fgets(str1, 100, stdin); // fgets can hold more than a single string character
+  printf("%s",str1);
+  return 0;
+}
