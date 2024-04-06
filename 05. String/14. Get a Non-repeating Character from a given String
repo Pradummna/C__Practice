@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<string.h>
+
+char findFirstNonRepeatingChar(char str[], int size);
+int main() {
+  char str[200];
+  printf("Give Input:\n");
+  scanf("%s",str);
+  int size = strlen(str);
+  char res = findFirstNonRepeatingChar(str, size);
+  if(res != '\0') {
+    printf("Result is: %c",res);
+  } else {
+    printf("Error 404");
+  }
+  return size;
+}
+
+char findFirstNonRepeatingChar(char str[], int size) {
+  for(int i=0; i<size; i++) {
+    int count = 0;
+    for(int j=0; j<size; j++) {
+      if(i != j && str[i] == str[j]) {
+        count++;
+        break;
+      }
+    }
+    if(count == 0) {
+      return str[i];
+    }
+  }
+  return '\0';
+}
