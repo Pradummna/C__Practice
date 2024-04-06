@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<stdbool.h>
+#include<string.h>
+
+bool checkPangram(char str[]);
+
+int main() {
+  char str[200];
+  printf("Enter a line of string\n");
+  fgets(str, 200, stdin);
+
+  if(checkPangram(str) == true) {
+    printf("Given string is pangram:\n %s", str);
+  } else {
+    printf("Given string is not pangram:\n %s",str);
+  }
+  return (0);
+}
+
+bool checkPangram(char str[]) {
+  bool mark[26];
+  for(int i=0; i<26; i++) {
+    mark[i] = false;
+  }
+  int idx;
+  size_t size = strlen(str);
+  for(int i=0; i<size; i++) {
+    if('A' <= str[i] && str[i] <= 'Z') {
+      idx = str[i] - 'A';
+    } else if('a' <= str[i] && str[i] <= 'z') {
+      idx = str[i] - 'a';
+    } else {
+      continue;
+    }
+    mark[idx] = true;
+  }
+
+  for(int j=0; j<26; j++) {
+    if(mark[j] == false) {
+      return(false);
+    }
+  }
+  return (true);
+}
