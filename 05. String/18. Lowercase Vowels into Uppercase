@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<string.h>
+void print(char v[], int n);
+void lowerToUpper(char v[], int n);
+
+int main() {
+  char vowels[] = {'a', 'e', 'i', 'o', 'u'};
+  int size = sizeof(vowels) / sizeof(vowels[0]);
+  printf("Lowercase vowels:\n");
+  print(vowels, size);
+  lowerToUpper(vowels, size);
+  printf("\nUppercase vowels:\n");
+  print(vowels, size);
+  return 0;
+}
+
+void print(char v[], int n) {
+  for(int i=0; i<n; i++) {
+    printf("%c ",v[i]);
+  }
+}
+
+void lowerToUpper(char v[], int n) {
+  for(int i=0; i<n; i++) {
+    if(v[i] >= 'a' && v[i] <= 'z') {
+      v[i] = v[i] - 32;
+    }
+  }
+}
