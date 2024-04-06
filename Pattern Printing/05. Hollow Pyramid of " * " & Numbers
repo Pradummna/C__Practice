@@ -1,4 +1,5 @@
 // Note: There are two approaches given for the solution
+// method 1
 #include<stdio.h>
 int pyramidStar(int n);
 int main() {
