@@ -1,0 +1,45 @@
+// Using recursion method 1
+# include <stdio.h>
+
+// Function to print reverse of 
+// the passed string 
+void reverse(char *str)
+{
+if (*str)
+{
+	reverse(str + 1);
+	printf("%c", *str);
+}
+}
+
+// Driver code
+int main()
+{
+char a[] = "Geeks for Geeks";
+reverse(a);
+return 0;
+}
+
+// using recursion method 2
+#include<stdio.h>
+
+// Function to print reverse of 
+// the passed string 
+void reverse(char *str, int idx, int end)
+{
+  if(idx == end) {
+    return;
+  }
+  char temp = str[idx];
+  reverse(str, idx + 1, end); 
+  printf("%c", temp);
+}
+
+// Driver code
+int main()
+{
+char a[] = "Geeks for Geeks";
+int end = sizeof(a) / sizeof(a[0]);
+reverse(a, 0, end);
+return 0;
+}
