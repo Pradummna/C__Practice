@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<string.h>
+void compare(char *x, char *y);
+
+int main() {
+  char str1[100], str2[100];
+  printf("Enetr first string: ");
+  fgets(str1, 100, stdin);
+  printf("\nEnter second string: ");
+  fgets(str2, 100, stdin);
+  compare(str1, str2);
+  return 0;
+}
+
+void compare(char *x, char *y) {
+  int  i;
+  for(i=0; x[i] != '\0' || y[i] != '\0'; i++) {
+    if(x[i] > y[i]) {
+      printf("%s is lexicographically greater than %s",x,y);
+      return;
+    } 
+    else if(x[i] < y[i]) {
+      printf("%s is lexicographically greater than %s",y,x);
+      return;
+    } 
+  }
+  if (x[i] != '\0') { 
+      printf("%s is lexicographically greater than %s",x, y); 
+  } 
+  else if (y[i] != '\0') { 
+      printf("%s is lexicographically greater than %s",y,x); 
+  } 
+  else { 
+      printf("Both strings are lexicographically equal"); 
+  } 
+} 
