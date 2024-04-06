@@ -1,0 +1,25 @@
+// In this code we take num variable to print the values
+#include<stdio.h>
+int main() {
+  int n, i, j, gap, num=1;
+  printf("Enter the rows: ");
+  scanf("%d",&n);
+  gap = n - 1;
+  for(i=1; i<=n; i++) {
+    num = i;
+    for(j=1; j<=gap; j++) {
+      printf(" ");
+    } gap--;
+    for(j=1; j<=i; j++) {
+      printf("%d",num);
+      num++;  // this statement will increase the num value after printing the first value and enter the loop with new num value until the statement will not false
+    }
+    num--;  // It will decrease the num value 
+    num--;  // againg decrease the num value
+    for(j=1; j<i; j++) {
+      printf("%d",num);
+      num--; 
+    } printf("\n");
+  }
+  return 0;
+}

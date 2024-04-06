@@ -1,0 +1,35 @@
+#include<stdio.h>
+void startUp(int n);
+void starDown(int n);
+int main() {
+    int n;
+    printf("Enter the term: ");
+    scanf("%d",&n);
+    startUp(n);
+    starDown(n);
+    return 0;
+}
+
+void startUp(int n) {
+    int i, j, spc;
+    for(i=1; i<=n; i++) {
+        for(spc=n; spc>i; spc--) {
+            printf(" ");
+        }
+        for(j=1; j<=i; j++) {
+            printf("* ");
+        } printf("\n");
+    }
+}
+
+void starDown(int n) {
+    int i, j, spc;
+    for(i=n; i>=1; i--) {
+        for(spc=n; spc>i; spc--) {
+            printf(" ");
+        }
+        for(j=1; j<=i; j++) {
+            printf("* ");
+        } printf("\n");
+    }
+}
