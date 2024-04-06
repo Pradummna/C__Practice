@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<string.h>
+void revArr(char arr[], int size);
+
+int main() {
+  char arr[] = "abcdef";
+  int size = strlen(arr);
+  printf("Original string array: %s",arr);
+  printf("\nReverse the string array:");
+  revArr(arr, size);
+  return 0;  
+}
+
+void revArr(char arr[], int size) {
+  for(int i=size-1; i>=0; i--) {
+    printf("%c",arr[i]);
+  }
+}
+
+// same code modified by AI
+#include <stdio.h>
+#include <string.h>
+
+char* revArr(char arr[], int size);
+
+int main() {
+  char arr[] = "abcdef";
+  char* reversed = revArr(arr, strlen(arr));
+  printf("Reversed string: %s", reversed);
+  return 0;  
+}
+
+char* revArr(char arr[], int size) {
+  static char reversed[100]; // Assuming a maximum length for the reversed string
+  int j = 0;
+  for(int i = size - 1; i >= 0; i--) {
+    reversed[j++] = arr[i];
+  }
+  reversed[j] = '\0';
+  return reversed;
+}
