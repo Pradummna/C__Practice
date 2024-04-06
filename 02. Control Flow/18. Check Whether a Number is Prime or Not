@@ -1,0 +1,57 @@
+// Note: There are two solutions given for this questions
+
+// Simple method
+#include<stdio.h>
+void isPrime(int n);
+int main() {
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    isPrime(number);
+    return 0;
+}
+
+void isPrime(int n) {
+    int flag = 1;
+    for(int i=2; i<=n/2; i++) {
+        if(n % i == 0) {
+            flag = 0;
+            break;
+        }
+    } 
+    if(flag) {
+        printf("%d is a prime number", n);
+    } else {
+        printf("%d is a not a prime number", n);
+    }
+}
+
+// Using sqrt in math.h method
+#include<stdio.h>
+#include<math.h>
+void isPrime(int n);
+int main() {
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    isPrime(number);
+    return 0;
+}
+
+void isPrime(int n) {
+    int flag = 1;
+    double sq = sqrt(n);
+    
+    for(int i=2; i<=sq; i++) {
+        if(n % i == 0) {
+            flag = 0;
+            break;
+        }
+    }
+    
+    if(flag) {
+        printf("%d is a prime number", n);
+    } else {
+        printf("%d is a not a prime number", n);
+    }
+}

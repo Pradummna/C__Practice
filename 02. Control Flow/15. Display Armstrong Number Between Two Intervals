@@ -1,0 +1,65 @@
+// Note: There are two solutions are given to solve this problem
+#include<stdio.h>
+int main() {
+    int s=1, e, arm = 0, n, c;
+    int numA, numB;
+    
+    printf("Enter the end term: ");
+    scanf("%d", &e);
+    
+    for(int i=s; i<=e; i++) {
+        numA = i;
+        numB = i;
+        c = 0;
+        while(numA != 0) {
+            numA = numA / 10;
+            c++;
+        }
+        
+        while(numB != 0) {
+            n = numB % 10;
+            int pow = 1;
+            for(int i=1; i<=c; i++)
+                pow = pow * n;
+                arm = arm + (pow);
+                numB = numB / 10;
+        }
+        
+        if(arm == i) {
+            printf("%d\n",i);
+        }
+        arm = 0;  
+    } return 0;
+}
+
+// using pow function
+#include<stdio.h>
+#include<math.h>
+
+int main() {
+    int start=1, end, numA, numB, c, arm=0, n;
+    printf("Enter the end term: ");
+    scanf("%d", &end);
+    
+    for(int i=start; i<=end; i++) {
+        numA=i;
+        numB=i;
+        c=0;
+        while(numA != 0) {
+            numA = numA / 10;
+            c++;
+        }
+        
+        while(numB != 0) {
+            n = numB % 10;
+            arm = arm + pow(n, c);
+            numB = numB / 10;
+        }
+        
+        if(arm == i) {
+            printf("%d\n", i);
+        }
+        arm = 0;
+    } 
+    return 0;
+}
