@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<string.h>
+void salting(char *ps);
+
+int main() {
+  char password[200];
+  printf("Enter your password: ");
+  scanf("%s",password);
+  salting(password);
+  return 0;
+}
+
+void salting(char *ps) {
+  char salt[] = "123";
+  strcat(ps, salt);
+  puts(ps);
+}
