@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<string.h>
+char revString(char s1[100],char s2[100],int size);
+char stringIsPlaindrome(char s1[100],char s2[100],int size);
+
+int main() {
+  char s1[100], s2[100];
+  printf("Input: ");
+  scanf("%s",s1);
+  int size = strlen(s1);
+  revString(s1, s2, size);
+  int res = stringIsPlaindrome(s1, s2, size);
+  if(res == 1) {
+    printf("Given input %s and %s is plaindrome", s1, s2);
+  } else {
+    printf("Given input %s and %s is not plaindrome", s1, s2);
+  }
+  return 0;
+}
+
+char revString(char s1[100],char s2[100],int size) {
+  int j=0;
+  for(int i=size-1; i>=0; i--) {
+    s2[j++] = s1[i];
+  }
+  return s2[100];
+}
+
+char stringIsPlaindrome(char s1[100],char s2[100],int size) {
+  for(int i=0; i<size; i++) {
+      if(s1[i] != s2[i]) {
+        return 0;
+      }
+    } return 1;
+}
