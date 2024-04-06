@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<string.h>
+int main() {
+  char string[] = "hello world";
+  char length = strlen(string);
+  printf("String length using strlen function %d", length);
+  // now using loop
+  int i = 0;
+  while(string[i] != '\0') {
+    i++;
+  }
+  printf("\nString length using loop: %d", i);
+  return 0;
+}
