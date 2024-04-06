@@ -1,0 +1,41 @@
+#include<stdio.h>
+int sortRowWise(int m[][4],int r,int c);
+
+int main() {
+  int arr[][4] = {{5, 4, 8, 3},
+                  {9, 3, 6, 2},
+                  {4, 7, 5, 2},
+                  {6, 4, 5, 2}};
+  printf("Dispay Array\n");
+  for(int i=0; i<4; i++) {
+    for(int j=0; j<4; j++) {
+      printf("%d ",arr[i][j]);
+    } printf("\n");
+  }
+  sortRowWise(arr, 4, 4);
+  return 0;
+}
+
+int sortRowWise(int m[][4],int r,int c) {
+  // here we will use swap method
+  int t=0;
+  for(int i=0; i<r; i++) {
+    for(int j=0; j<c; j++) {
+      for(int k=0; k<c-j-1; k++) {
+        if(m[i][k] > m[i][k+1]) {
+          t = m[i][k];
+          m[i][k] = m[i][k+1];
+          m[i][k+1] = t;
+        }
+      }
+    }
+  }
+
+  printf("\nDispay array after applying sortRow method\n");
+  for(int a=0; a<4; a++) {
+    for(int b=0; b<4; b++) {
+      printf("%d ",m[a][b]);
+    } printf("\n");
+  }
+  return 0;
+}
