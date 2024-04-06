@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main(void) {
+  int arr[5];
+  int temp;
+  // insert elements dyanamically into array
+  printf("Enter array elements:\n");
+  for(int a=1; a<=5; a++) {
+    printf("Index %d: ", a);
+    scanf("%d",&arr[a]);
+  }
+  // Displaying all the array elements 
+  printf("\nBefore sorting\n");
+  for(int b=1; b<=5; b++) {
+    printf("%d ",arr[b]); // using coma (,) for better readbility
+  }
+ // Using loop and swap method for sort array elements
+  for(int i=0; i<=5; i++) {
+    for(int j=i+1; j<=5; j++) {
+      if(arr[i] > arr[j]) {
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+  } 
+// Displaying the array elements after sorting 
+  printf("\n\nAfter sorting\n");
+  for(int c=1; c<=5; c++) {
+    printf("%d, ",arr[c]);
+  }
+  return 0;
+}
