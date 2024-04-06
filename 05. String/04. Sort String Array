@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+void display(char* arr[], int n);
+void sort(char* arr[], int n);
+static int compare(const void* a, const void* b);
+
+int main() {
+  char* arr[] = {"Neymar", "Suarez", "Messi"};
+  int n = sizeof(arr) / sizeof(arr[0]); 
+  printf("Original Array: ");
+  display(arr, n);
+  sort(arr, n);
+  printf("\nArray after sorting: ");
+  display(arr, n);
+  return 0;
+}
+
+void display(char* arr[], int n) {
+ for(int i=0; i<n; i++) {
+   printf("%s ",arr[i]);
+  } printf("\n");
+}
+
+void sort(char* arr[], int n) {
+   qsort(arr, n, sizeof(const char*), compare);   // qsort() is a standard library function in C used for sorting arrays. It stands for "quick sort."
+      /* It takes four arguments: The base address of the array to be sorted. The number of elements in the array. The size of each element in the array (in bytes). 
+      A comparison function that determines the order of elements. */
+}
+
+static int compare(const void* a, const void* b) {
+  return strcmp(*(const char**)a, *(const char**)b);   // strcmp() is a function in the C programming language used to compare two strings. It stands for "string compare".
+} 
