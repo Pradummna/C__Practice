@@ -1,0 +1,72 @@
+// Note: This question was solved using two method: recursion and loop
+// 1) Using recursion
+#include<stdio.h>
+int binarySearch(int arr[], int f_Idx, int l_Idx, int elem);
+
+int main() {
+    int arr[] = {12, 15, 18, 22};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int elem;
+    printf("Enter the value for search: ");
+    scanf("%d", &elem);
+    int index = binarySearch(arr, 0, size - 1, elem);
+    
+    if(index == -1) {
+         printf("Sorry %d is not in our array memory", elem);
+    } else {
+         printf("%d is on the index no %d",elem, index);
+    }
+    return 0;
+}
+
+int binarySearch(int arr[], int f_Idx, int l_Idx, int elem) {
+    if(l_Idx >= f_Idx) {
+        int mid = f_Idx + (l_Idx - f_Idx) / 2;  
+        
+        if(arr[mid] == elem) {
+            return mid;
+        }
+        else if(arr[mid] > elem) {
+            return binarySearch(arr, f_Idx, mid - 1, elem); 
+        } 
+        else {
+            return binarySearch(arr, mid + 1, l_Idx, elem);
+        }
+    } 
+    return -1;
+}
+
+// 2) Using loop
+#include<stdio.h>
+int binarySearch(int arr[], int f_Idx, int l_Idx, int elem) {
+    while(f_Idx <= l_Idx) {
+        int mid = f_Idx + (l_Idx - f_Idx) / 2;  
+        
+        if(arr[mid] == elem) {
+            return mid;
+        } 
+        else if(arr[mid] < elem) {
+            f_Idx = mid + 1;
+        }
+        else {
+            l_Idx = mid - 1;
+        }
+    } 
+    return -1;
+}
+
+int main() {
+    int arr[] = {12, 15, 18, 22};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int elem;
+    printf("Enter the value for search: ");
+    scanf("%d", &elem);
+    int index = binarySearch(arr, 0, size - 1, elem);
+    
+    if(index == -1) {
+         printf("Sorry %d is not in our array memory", elem);
+    } else {
+         printf("%d is on the index no %d",elem, index);
+    }
+    return 0;
+}
