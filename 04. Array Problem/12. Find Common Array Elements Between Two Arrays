@@ -1,0 +1,47 @@
+#include<stdio.h>
+void displayArr(int arr1[], int arr2[], int n1, int n2);
+void comonArr(int arr1[], int arr2[], int n1, int n2, int res[]);
+
+int main() {
+  int arr1[] = {8, 2, 3, 4, 5, 6, 7, 1};
+  int arr2[] = {4, 5, 7, 11, 6, 1};
+  int size1 = sizeof(arr1) / 4;
+  int size2 = sizeof(arr2) / 4;
+  int res[100];
+  displayArr(arr1, arr2, size1, size2);
+  comonArr(arr1, arr2, size1, size2, res);
+  return 0;
+}
+
+void displayArr(int arr1[], int arr2[], int n1, int n2) {
+  printf("First array\n");
+  for(int i=0; i<n1; i++) {
+      printf("%d ",arr1[i]);  
+  }
+  printf("\n\nSecond array\n");
+  for(int j=0; j<n2; j++) {
+      printf("%d ",arr2[j]);  
+  }
+}
+
+void comonArr(int arr1[], int arr2[], int n1, int n2, int res[]) {
+  int i, j, flag, k=0, x;
+  printf("\n\nComon values of both arrays\n");
+  for(i=0; i<n1; i++) {
+    for(j=0; j<n2; j++) {
+      if(arr1[i] == arr2[j]) {
+        flag = 0;
+        for(x=0; x<k; x++) {
+          if(res[x] == arr1[i]) {
+            flag++;
+          }
+        } 
+        if(flag == 0) {
+          res[k] = arr1[i];
+          printf("%d ", res[k]);
+          k++;
+        }
+      }
+    }
+  }
+}
