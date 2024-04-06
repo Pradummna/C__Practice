@@ -1,0 +1,48 @@
+#include<stdio.h>
+void pushData(int arr[], int n);
+void displayData(int arr[], int n);
+void removeOcc(int arr[], int val, int n);
+
+int main() {
+  int n;
+  printf("\nEnter the length of the array: ");
+  scanf("%d",&n);
+  int arr[n]; // add the length into array
+  pushData(arr, n); // now add values into array 
+  displayData(arr, n); // display the array
+  int val;
+  printf("\nEnter the value to remove to all occurences from array: ");
+  scanf("%d",&val); // get value to remove all occurences
+  removeOcc(arr, val, n); // remove all occurences and display values
+  return 0;
+}
+
+void pushData(int arr[], int n) {
+  printf("\nEnter array elements:\n");
+   for(int a=0; a<n; a++) {
+     printf("Index %d: ", a+1);
+     scanf("%d",&arr[a]);
+   }
+}
+
+void displayData(int arr[], int n) {
+  printf("\nArray before removing all occurence\n");
+   for(int b=0; b<n; b++) {
+     printf("%d ",arr[b]); 
+   }
+}
+
+void removeOcc(int arr[],int val,int n) {
+  int removed = 0;
+  printf("\nArray after removing all occurence\n");
+  for(int c=0; c<n; c++) {
+    if(arr[c] != val) {
+      printf("%d ", arr[c]);
+    }  else {
+      removed++; // Increment the counter if element is removed
+    }
+  }  
+  if (removed == 0) {
+    printf("No occurrences of %d found.", val); // Notify if no occurrences were found
+  }
+}
