@@ -1,0 +1,48 @@
+#include<stdio.h>
+#define n 4
+int checkMatrix(int a[][n], int b[][n]);
+void printMatrix(int a[][n], int b[][n]);
+int main() {
+  int a[n][n] = {{4, 3, 2},
+              {2, 5, 8},
+              {4, 7, 1},
+              {2, 9, 8}};
+  int b[n][n] = {{4, 3, 2},
+              {1, 5, 8},
+              {3, 7, 1},
+              {2, 6, 8}};
+  printMatrix(a, b);
+  checkMatrix(a, b);
+
+  if(checkMatrix(a, b)) {
+    printf("\nBoth Matrix are equal");
+  } else {
+    printf("\nBoth Matrix are not equal");
+  }
+  return 0;
+}
+ 
+void printMatrix(int a[][n], int b[][n]) {
+  printf("Enter first matrix\n");
+  for(int i=0; i<n; i++) {
+    for(int j=0; j<n; j++) {
+      printf("%d ",a[i][j]);
+    } printf("\n");
+  }
+  printf("\nEnter second matrix\n");
+  for(int i=0; i<n; i++) {
+    for(int j=0; j<n; j++) {
+      printf("%d ",b[i][j]);
+    } printf("\n");
+  }
+}
+
+int checkMatrix(int a[][n], int b[][n]) {
+  for(int i=0; i<n; i++) {
+    for(int j=0; j<n; j++) {
+      if(a[i][j] != b[i][j]) {
+        return 0;
+      }
+    }
+  } return 1;
+}
