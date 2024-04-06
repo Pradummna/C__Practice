@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void checkVowels(char* vowels, char* str, int n);
+
+int main() {
+    char str[100];
+    char vowels[] = {'a', 'e', 'i', 'o', 'u'};
+    printf("Enter a string: ");
+    scanf("%s", str);
+    int n = strlen(str);
+    printf("\nOriginal data: %s", str);
+    checkVowels(vowels, str, n); 
+    return 0;
+}
+
+void checkVowels(char* vowels, char* str, int n) {
+    char newArr[100];
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (str[i] == vowels[j]) {
+                newArr[count] = str[i];
+                count++;
+                break;
+            }
+        }
+    }
+    newArr[count] = '\0'; // Add null terminator
+    printf("\n\nAfter checking vowels\n");
+    printf("Number of vowels: %d\n", count);
+    printf("Vowels found: %s\n", newArr);
+}
