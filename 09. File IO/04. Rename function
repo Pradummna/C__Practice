@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+    char oldName[] = "barca.txt";
+    char newName[100];
+
+    FILE* file;
+    file = fopen(oldName,"w");
+
+    if (file == NULL) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+
+    printf("File name: %s", oldName);
+    printf("\nEnter the new name for the file (including extension): ");
+
+    if (scanf("%99s", newName) != 1) { // Limit input to 99 characters to prevent buffer overflow
+        printf("Error reading input\n");
+        exit(1);
+    }
+
+    int val = rename(oldName, newName);
+
+    if (val == 0) {
+        printf("\nFile name has been successfully renamed to %s\n", newName);
+    } else {
+        printf("\nFailed to rename the file\n");
+    }
+    fclose(file);
+    return 0; 
+}
