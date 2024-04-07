@@ -1,0 +1,11 @@
+#include<stdio.h>
+#include<string.h>
+int main() {
+  double val;
+  char str[100];
+  printf("Enter large value input: ");
+  scanf("%f",val);
+  sprintf(str,"%f", val); // a library function used for conversation
+  printf("The string value is: %s", str);
+  return 0;
+}
