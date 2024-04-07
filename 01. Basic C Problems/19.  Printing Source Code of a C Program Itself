@@ -1,0 +1,14 @@
+#include<stdio.h>
+
+int main(void) {
+  char c;
+  FILE *ptr = fopen(__FILE__, "r"); // Open the source file in read mode
+  // Loop to read each character from the file until end of file (EOF) is reached
+  do {
+    c = fgetc(ptr); // Read a character from the file
+    putchar(c); // Output the character to the console
+  } while(c != EOF); // Continue looping until end of file is reached
+
+  fclose(ptr); // Close the file
+  return 0;
+}
