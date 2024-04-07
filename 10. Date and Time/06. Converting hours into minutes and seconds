@@ -1,0 +1,18 @@
+#include<stdio.h>
+
+void convertHours(int hour) {
+  long long int minutes, seconds;
+  minutes = hour * 60;
+  seconds = hour * 3600;
+  printf("Minutes: %lld   Seconds: %lld",minutes, seconds);
+}
+
+int main() {
+  int hour;
+  printf("Enter hour value to convert into minutes and second\n");
+  printf("Hour: ");
+  scanf("%d",&hour);
+  printf("\nConverting %d hours into minutes and second\n",hour);
+  convertHours(hour);
+  return 0;
+}
