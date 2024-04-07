@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Person {
+    int id;
+    char fullName[100];
+    int age;
+};
+
+int main() {
+    struct Person person[100];
+    FILE *outFile;
+    outFile = fopen("file.bin", "wb");
+
+    if (outFile == NULL) {
+        fprintf(stderr, "\nError opening file\n");
+        exit(1);
+    }
+
+    int data, i = 0;
+    printf("\nEnter how many person's data you want to insert: ");
+    scanf("%d", &data);
+    getchar(); // Consume the newline character left in the input buffer
+
+    for (i = 0; i < data; i++) {
+        printf("\nData for person %d\n", i + 1);
+        printf("\nId: ");
+        scanf("%d", &person[i].id);
+        getchar(); // Consume the newline character left in the input buffer
+        printf("Full Name: ");
+        fgets(person[i].fullName, sizeof(person[i].fullName), stdin);
+        person[i].fullName[strcspn(person[i].fullName, "\n")] = '\0'; // Remove the newline character
+        printf("Age: ");
+        scanf("%d", &person[i].age);
+        getchar(); // Consume the newline character left in the input buffer
+    }
+
+    // Write the data to the file
+    fwrite(person, sizeof(struct Person), i, outFile);
+
+    printf("\n\nContents of the structure written successfully to file.bin\n");
+    // Close file
+    fclose(outFile);
+
+    // Open the file for reading
+    FILE* inFile;
+    inFile = fopen("file.bin", "rb");
+    if (inFile == NULL) {
+        fprintf(stderr, "\nError opening file for reading\n");
+        exit(1);
+    }
+
+    // Read and print the data from the file
+    int records_read = fread(person, sizeof(struct Person), 100, inFile);
+    printf("\nRecords read from file: %d\n", records_read);
+    for (int j = 0; j < records_read; j++) {
+        printf("\nData for person %d\n", j + 1);
+        printf("Id: %d\n", person[j].id);
+        printf("Full Name: %s\n", person[j].fullName);
+        printf("Age: %d\n", person[j].age);
+    }
+    // Close file
+    fclose(inFile);
+    return 0;
+}
