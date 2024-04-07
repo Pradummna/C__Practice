@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+    // Open a file named "barca.txt" in write mode ("w+")
+    FILE* file_write = fopen("barca.txt", "w+");
+    // Write content to the file
+    fprintf(file_write, "%s %s", "Forca", "Barca");
+    // Close the file
+    fclose(file_write);
+
+    // Open the same file in read mode ("r")
+    FILE* file_read = fopen("barca.txt", "r");
+    int display;
+
+    // Loop to read each character from the file until end of file is reached
+    while (1) {
+        // Read a character from the file
+        display = fgetc(file_read);
+        // Check if end of file is reached
+        if(feof(file_read)) {
+            break; // End the loop if end of file is reached
+        }
+        // Print the character to the console
+        printf("%c", display);
+    }
+    // Close the file
+    fclose(file_read);
+    // Return 0 to indicate successful execution
+    return 0;
+}
