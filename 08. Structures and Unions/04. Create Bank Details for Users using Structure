@@ -1,0 +1,32 @@
+#include<stdio.h>
+
+struct BankAcc {
+  char name[200];
+  char branch[50];
+  double acc_num;
+  double mobile_num;
+  double saving;
+};
+
+typedef struct BankAcc acc;
+
+void display(acc user);
+
+int main() {
+  acc user1 = {"Lionel Messi", "Argentina", 100086, 3486430000, 810000};
+  acc user2 = {"Christiano Ronaldo", "Portugal", 100054, 2554430000, 920000};
+
+  printf("User 1 Data\n\n");
+  display(user1);
+  printf("\nUser 2 Data\n\n");
+  display(user2);
+  return 0;
+}
+
+void display(acc user) {
+  printf("Name: %s\n", user.name);
+  printf("Branch: %s\n", user.branch);
+  printf("Account Number: %.0lf\n", user.acc_num);
+  printf("Mobile Number: %.0lf\n", user.mobile_num);
+  printf("Savings: %.2lf\n", user.saving);
+}
