@@ -1,0 +1,71 @@
+// Note: There are five method given to solve this problem
+// Method 1
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  char str[100];
+  printf("Enter string number: ");
+  scanf("%s",str);
+  long integer;
+  integer = strtol(str, NULL, 10);
+  printf("Convert to number: %lu",integer);
+}
+
+// Method 2
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  char str[100];
+  printf("Enter string number: ");
+  scanf("%s",str);
+  long integer;
+  char* ptr;
+  integer = strtol(str, &ptr, 10);
+  printf("\nInteger part: %lu",integer);
+  printf("\nString part: %s",ptr);
+  return 0;
+} 
+
+// Method 4 using atol() function 
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    long l;
+    char str[100]; // Allocate memory for the string
+    printf("Enter string number: ");
+    scanf("%s", str);
+    l = atol(str);
+    printf("\nlong = %ld", l); // Correct specifier for long
+    return 0;
+}
+
+// Method 4 using ltoa() 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+	long num = 1234;
+	char str[100];
+
+	ltoa(num, str, 10);
+	printf("string is %s\n", str);
+	return 0;
+}
+
+// Method 5 using sscanf()
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+  char input[100];
+  printf("Enter string number: ");
+  scanf("%s",input);
+  long num;
+  sscanf(input, "%ld", &num);
+  printf("%ld\n", num);
+  return 0;
+}
