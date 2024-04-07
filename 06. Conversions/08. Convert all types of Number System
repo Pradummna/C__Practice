@@ -1,0 +1,153 @@
+// 1. Program to Demonstrate Conversion of Octal to Decimal using Format Specifier
+#include <stdio.h>
+
+// Driver code
+int main()
+{
+  int num;
+  printf("Enter an Octal number: ");
+  scanf("%o", &num);
+  printf("\nDecimal Representation is: %d", num);
+  return 0;
+}
+
+// 2. Program to Demonstrate Conversion of Decimal to Octal using Format Specifier
+// This problem was solved using 3 methods
+
+// method 1
+#include <stdio.h>
+// Driver code
+int main()
+{
+  int num;
+  printf("Enter an Decimal number: ");
+  scanf("%d", &num);
+  printf("\nOctal Representation is: %o", num);
+  return 0;
+}
+
+//method 2
+#include<stdio.h>
+#include<stdlib.h>
+void decimalToOctal(int n);
+
+int main() {
+  int val = 23;
+  printf("Decimal value = %d\n",val);
+  decimalToOctal(val);
+}
+
+void decimalToOctal(int n) {
+  int i = 0;
+  int arr[100];
+  int rem;
+  while(n != 0) {
+    rem = n % 8;
+    arr[i++] = rem;
+    n = n / 8;
+  }
+  printf("\nOctal value: ");
+  for(int j = i - 1; j >= 0; j--) {
+    printf("%d",arr[j]);
+  }
+}
+
+// method 3 [O(1) space Complexity]
+#include<stdio.h>
+#include<stdlib.h>
+int convert(int n);
+
+int main() {
+  int val = 23;
+  printf("Decimal value = %d\n",val);
+  int res = convert(val);
+  printf("From Decimal to Octal value = %d",res);
+  return 0;
+}
+
+int convert(int n) {
+ int octNum = 0, countVal = 1;
+ int rem;
+ while(n != 0) {
+   rem = n % 8;
+   octNum += (rem * countVal);
+   countVal *= 10;
+   n = n / 8;
+ }
+  return octNum;
+}
+
+// 3. Hexadecimal to Decimal Conversion
+#include<stdio.h>
+
+int main() {
+  int n;
+  printf("Enter a hexadecimal value: ");
+  scanf("%x",&n);
+  
+  printf("To decimal value: %d",n);
+  return 0;
+}
+
+// 4. Decimal to Hexadecimal Conversion
+#include<stdio.h>
+
+int main() {
+  int n;
+  printf("Enter a decimal value: ");
+  scanf("%d",&n);
+  
+  printf("To hexadecimal value: %x",n);
+  return 0;
+}
+
+// 5. Decimal to Binary
+#include<stdio.h>
+void decimalToBinary(int num);
+
+int main() {
+  int num;
+  printf("Decimal value: ");
+  scanf("%d",&num);
+  decimalToBinary(num);
+  return 0;
+}
+
+void decimalToBinary(int num) {
+  int i = 0;
+  int arr[20];
+  
+  while(num > 0) {
+    arr[i++] = num % 2; // store reminder value in array
+    num = num / 2;
+  }
+  int n = sizeof(arr) / sizeof(arr[0]);
+  for(int j = i - 1; j >= 0; j--) {
+    printf("%d",arr[j]);
+  }
+}
+
+// 6. Binary to Decimal
+#include<stdio.h>
+int binaryTodecimal(int num);
+
+int main() {
+  int num;
+  printf("Decimal value: ");
+  scanf("%d",&num);
+  int res = binaryTodecimal(num);
+  printf("\nBinary value: %d", res);
+  return 0;
+}
+
+int binaryTodecimal(int num) {
+  int dcV = 0, ld, temp = num, base = 1;
+  
+  while(temp) {
+    ld = temp % 10; 
+    temp = temp / 10;
+    dcV += ld * base;
+    base = base * 2;
+  }
+   return dcV;
+}
