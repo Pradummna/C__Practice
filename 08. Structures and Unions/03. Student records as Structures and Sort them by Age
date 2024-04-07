@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void insert(int n);
+void display(int n);
+int comparator(const void* p, const void* q);
+
+struct student {
+  int id;
+  char name[50];
+  int age;
+};
+
+struct student *students;
+
+int main() {
+  int n;
+  printf("How many students record do you want to insert\n");
+  printf("Total number of record: ");
+  scanf("%d", &n);
+
+  students = malloc(n * sizeof(struct student));
+  if (students == NULL) {
+    printf("Memory allocation failed\n");
+    return 1;
+  }
+
+  insert(n);
+  display(n);
+  qsort(students, n, sizeof(struct student), comparator); 
+  printf("\nAfter sorting by name:\n");
+  display(n);
+  free(students);
+  return 0;
+}
+
+void insert(int n) {
+  printf("\nInsert Student Data\n");
+  for (int i = 0; i < n; i++) {
+    printf("\nID: ");
+    scanf("%d", &students[i].id);
+    printf("\nName: ");
+    scanf("%s", students[i].name);
+    printf("\nAge: ");
+    scanf("%d", &students[i].age);
+
+    printf("\n\nPress Enter for next step...");
+    while (getchar() != '\n');
+    getchar();
+  }
+}
+
+void display(int n) {
+  printf("\nDisplaying Student records:\n");
+  for (int i = 0; i < n; i++) {
+    printf("\n\tID = %d\n", students[i].id);
+    printf("\tName = %s\n", students[i].name);
+    printf("\tAge = %d\n", students[i].age);
+  } 
+}
+
+int comparator(const void* p, const void* q) {
+  return (((struct student*)p)->age -
+    ((struct student*)q)->age); 
+}
