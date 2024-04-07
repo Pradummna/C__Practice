@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <time.h>
+
+int main() {
+    // Declare variables to store time information
+    time_t rawtime;  // Stores the raw time (seconds since epoch)
+    struct tm * timeinfo;  // Pointer to a structure to store broken-down time information
+
+    // Get the current time
+    time(&rawtime);  // Get the current time in seconds since epoch
+    timeinfo = localtime(&rawtime); // Convert the raw time to local time and store it in timeinfo
+
+    // Display the current date and time
+    printf("Current date and time: %s", asctime(timeinfo)); 
+    return 0; 
+}
