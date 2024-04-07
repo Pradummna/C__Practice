@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<math.h>
+// Function prototypes
+void ftoa(float n, char* str, int afterpoint);
+int intToStr(int val, char* str, int d);
+void reverse(char* str, int len);
+
+int main() {
+  char str[30];
+  float n = 12.23;
+
+  // Print the floating-point number with 2 decimal places
+  printf("%0.2f\n", n);
+
+  // Convert float to string
+  ftoa(n, str, 4); // 4 decimal places
+  printf("%s\n", str); // Print the converted string
+  return 0;
+}
+
+void ftoa(float n, char* str, int afterpoint) {
+  // Extract int part
+  int convertToInt = (int)n; 
+  // Extract floating part
+  float fpart = n - convertToInt;
+  // Now convert int to string
+  int i = intToStr(convertToInt, str, 0);
+
+  if(afterpoint != 0) {
+    str[i] = '.';
+    // Get the value of fraction part up to given no. 
+    // of points after dot.
+    fpart = fpart * pow(10, afterpoint); 
+    intToStr((int)fpart, str + i + 1, afterpoint); 
+  }
+}
+
+int intToStr(int val, char str[], int d) {
+  int i = 0;
+  while(val) {
+    str[i++] = (val % 10) + '0'; // ASCII value which was 48 and it will add with val % 10 and the addition result ASCII value number will get  
+    val = val / 10;
+  }
+
+  while(i < d) {
+    str[i++] = '0';
+  }
+  reverse(str, i);
+  str[i] = '\0';
+  return i;
+}
+
+void reverse(char* str, int len) {
+  int i = 0, j = len - 1;
+  char temp;
+  while(i < j) {
+    temp = str[i];
+    str[i] = str[j];
+    str[j] = temp;
+    i++;
+    j--;
+  }
+}
