@@ -1,0 +1,32 @@
+#include<stdio.h>
+void isPlaindrome(char* str);
+
+int main() {
+  char str[500];
+  printf("Enter a single string value to check it is plaindrome or not\n");
+  printf("Value: ");
+  scanf("%s",str);
+  isPlaindrome(str);
+  return 0;
+}
+
+void isPlaindrome(char* str) {
+  char *ptr, *rev;
+  ptr = str;
+  while(*ptr != '\0') {
+    ptr++;
+  } ptr--;
+
+  for(rev = str; rev <= ptr;) {
+    if(*ptr == *rev) {
+      ptr--;
+      rev++;
+    } else {
+       break;
+    }
+  }
+  if (rev > ptr) 
+    printf("String is Palindrome"); 
+  else
+    printf("String is not a Palindrome"); 
+}
