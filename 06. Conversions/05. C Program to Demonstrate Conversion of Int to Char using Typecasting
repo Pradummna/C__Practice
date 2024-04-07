@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int main()
+{
+  int N;
+  printf("Enter to number input to see their alphabet character: ");
+  scanf("%d", &N);
+  printf("%c", (char)(N));
+  return 0;
+}
