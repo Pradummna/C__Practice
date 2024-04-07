@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<string.h>
+
+void search(const char* word, const char* para);
+
+int main() {
+  char para[200];
+  char word[30];
+
+  printf("Enter a paragraph: \n");
+  fgets(para, sizeof(para), stdin);
+  para[strcspn(para, "\n")] = '\0';
+  
+  printf("\nEnter the word you want to search: ");
+  fgets(word, sizeof(word), stdin);
+  word[strcspn(word, "\n")] = '\0';
+  
+  search(word, para);
+  return 0;
+}
+
+void search(const char* word, const char* para) {
+  int m, n;
+  m = strlen(word);
+  n = strlen(para);
+
+  for (int i = 0; i <= n - m; i++) {
+    int j;
+
+    for(j = 0; j < m; j++) {
+      if(para[i + j] != word[j]) {
+        break;
+      }
+    }
+      if( j == m) {
+        printf("Pattern found at index %d \n", i);
+      }
+    }
+}
