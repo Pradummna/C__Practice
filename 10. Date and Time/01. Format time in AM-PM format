@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define n 50 // Define a constant for the size of the char array
+
+int main() {
+  time_t t; // Declare a variable to hold the time value
+  struct tm *tmp; // Declare a pointer to a structure for storing time components
+  char myTime[n]; // Declare a character array to hold formatted time
+
+  time(&t); // Get the current time and store it in 't'
+  tmp = localtime(&t); // Convert the current time to local time and store it in 'tmp'
+
+  // Format the time and store it in 'myTime' using strftime function
+  // "%x" represents the date in the locale's date format
+  // "%I:%M%p" represents the time in 12-hour format with AM/PM indicator
+  strftime(myTime, sizeof(myTime), "%x - %I:%M%p", tmp);
+
+  // Print the formatted date and time
+  printf("Formatted date and time: %s\n", myTime);
+  return 0; // Return 0 to indicate successful execution
+}
