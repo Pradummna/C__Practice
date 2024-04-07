@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+
+// Function to extract initials from a string
+void getInitials(char* str);
+
+int main(void) {
+  char str[100];
+  printf("Enter string value: ");
+  fgets(str, 100, stdin); // Reading input string from user
+  printf("Your initials are: "); 
+  getInitials(str); // Calling function to get initials
+  return 0;
+}
+
+// Function to extract initials from a string
+void getInitials(char* str) {
+  int i = 0;
+  int length = strlen(str); // Getting length of input string
+
+  // Check if the first character is an alphabet and print its uppercase version
+  if(length > 0 && isalpha(str[0])) {
+    printf("%c ", toupper(str[0]));
+  }
+
+  // Iterate through the string
+  while(str[i] != '\0') {
+    // Check if current character is a space
+    if(isspace(str[i]) != 0) {
+      // Skip over consecutive spaces
+      while(isspace(str[i]) && i <= length) {
+        i++;
+      }
+      // Print the next character after the space as an initial
+      printf("%c ", toupper(str[i]));
+    }
+    i++; // Move to the next character
+  }
+  printf("\n");
+}
