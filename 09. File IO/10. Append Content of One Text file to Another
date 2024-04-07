@@ -1,0 +1,40 @@
+// To run this program first create two files add 2 lines data in file 1 
+// ex: Hello
+// World
+#include<stdio.h>
+void append(char source[], char destination[]);
+
+int main() {
+  char source[] = "a.txt";
+  char destination[] = "b.txt";
+  append(source, destination);
+  return 0;
+}
+
+void append(char source[], char destination[]) {
+  FILE *f1, *f2;
+  f1 = fopen(source, "a+");
+  f2 = fopen(destination, "a+");
+  
+  if (!f1 && !f2) {
+      printf("Unable to open/"
+             "detect file(s)\n");
+      return;
+  }
+  
+  char buf[100];
+  fprintf(f2, "\n");
+
+  while (!feof(f1)) {
+    fgets(buf, sizeof(buf), f1);
+    fprintf(f2, "%s", buf); // write from a file
+  }
+
+  rewind(f2);
+
+  while (!feof(f2)) {
+    // fgets for read line from a file
+      fgets(buf, sizeof(buf), f2);
+      printf("%s", buf);
+  }
+}
