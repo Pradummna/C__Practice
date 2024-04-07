@@ -1,0 +1,106 @@
+// Note: This question was solved by two methods
+// Method 1
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void insert(int n);
+void display(int n);
+
+struct student {
+  char name[50]; // Changed to a fixed-size array
+  int roll_number;
+  int age;
+  double total_marks;
+};
+
+struct student *students; // Global array of student structs
+
+int main() {
+  int n;
+  printf("How many students record do you want to insert\n");
+  printf("Total number of record: ");
+  scanf("%d", &n);
+
+  students = malloc(n * sizeof(struct student)); // Dynamically allocate memory
+  if (students == NULL) {
+    printf("Memory allocation failed\n");
+    return 1; // Exit with failure status
+  }
+
+  insert(n);
+  display(n);
+
+  free(students); // Free dynamically allocated memory
+  return 0;
+}
+
+void insert(int n) {
+  printf("\nInsert Students Data\n");
+  for (int i = 0; i < n; i++) {
+    printf("\nName: ");
+    scanf("%s", students[i].name); // Accessing the i-th student
+    printf("\nRoll No: ");
+    scanf("%d", &students[i].roll_number);
+    printf("\nAge: ");
+    scanf("%d", &students[i].age);
+    printf("\nTotal Marks: ");
+    scanf("%lf", &students[i].total_marks);
+
+    // Prompt user to press Enter to insert next student's data
+    printf("\nPress Enter for next step...");
+    while (getchar() != '\n'); // Flush input buffer
+    getchar(); // Wait for user to press Enter
+  }
+}
+
+void display(int n) {
+  printf("\nDisplaying Student records:\n");
+  for (int i = 0; i < n; i++) {
+    printf("\tName = %s\n", students[i].name);
+    printf("\tRoll Number = %d\n", students[i].roll_number);
+    printf("\tAge = %d\n", students[i].age);
+    printf("\tTotal Marks = %0.2f\n\n", students[i].total_marks);
+  }
+}
+
+//2nd method
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+struct Students {
+  char* name;
+  int roll;
+  int age;
+  double total_marks;
+};
+
+int main() {
+  int n = 3;
+  struct Students student[n];
+
+  for(int i=0; i<n; i++) {
+    student[i].name = (char *)malloc(100 * sizeof(char));
+    printf("Name: ");
+    scanf("%s",student[i].name);
+    printf("\nRoll: ");
+    scanf("%d",&student[i].roll);
+    printf("\nAge: ");
+    scanf("%d",&student[i].age);
+    printf("\nTotal marks:  ");
+    scanf("%ld",&student[i].total_marks);
+  } printf("\n\n");
+
+  printf("Student Records:\n\n");
+  for(int j=0; j<n; j++) {
+    printf("\tName = %s\n", student[j].name);
+    printf("\tRoll Number = %d\n", student[j].roll);
+    printf("\tAge = %d\n", student[j].age);
+    printf("\tTotal Marks = %0.2f\n\n", student[j].total_marks);
+  }
+  for (int i = 0; i < n; i++) {
+      free(student[i].name);
+  }
+  return 0;
+}
