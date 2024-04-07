@@ -1,0 +1,57 @@
+// 1) Invalid memory access  
+// An invalid memory access error occurs during runtime when the array’s index is assigned a negative value. 
+#include <stdio.h>
+int a[5];
+int main()
+{
+  int s = a[-11];
+  printf("%d", s);
+  return 0;
+}
+
+// 2) Dividing by zero
+When we are trying to divide any number by zero then we get this type of error called floating-point errors.
+#include <stdio.h>
+
+int main()
+{
+    int a = 5;
+    printf("%d", a / 0);
+    return 0;
+}
+
+// 3) Segmentation Faults
+Let us consider an array of length 5 i.e. array[5], but during runtime, if we try to access 10 elements i.e array[10] then we get segmentation fault errors called runtime errors. Giving only an array length of 5
+
+#include <stdio.h>
+ 
+int main()
+{
+    int GFG[5];
+    GFG[10] = 10;
+    return 0;
+}
+
+// 4) Large memory allocation/Large Static Memory Allocation : 
+In general, all online judges allow up to 10^8. However, to be on the safe side, use up to 10^7 unless it is required. In the below example we have mentioned more than 10^8 so, it will cause an error due to large memory allocation.
+
+#include <stdio.h>
+ 
+int main()
+{
+    int GFG[10000000000];
+    printf("%d", GFG);
+    return 0;
+}
+
+// 5) Making common errors: 
+The below code gives runtime error because we have declared a variable as long int but in scanf we have used %d instead of %ld. So it will give an error.
+
+#include <stdio.h>
+ 
+int main()
+{
+    long int GFG;
+    scanf("%d", &GFG);
+    return 0;
+}
