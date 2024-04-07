@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main()
+{
+  char str;
+  int N;
+  printf("Enter string value to see number output: ");
+  scanf("%c", &str);
+  printf("%d", (int)(str));
+  return 0;
+}
