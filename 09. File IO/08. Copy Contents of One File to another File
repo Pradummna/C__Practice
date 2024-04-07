@@ -1,0 +1,40 @@
+// To run this program you need 2 files and write some data in file 1
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  FILE* f1;
+  char fn[100], c;
+ 
+  printf("Enter the filename to open for reading: ");
+  scanf("%s", fn);
+  
+  f1 = fopen(fn, "r");
+  if(f1 == NULL) {
+    printf("Cannot open file %s \n", fn); 
+    exit(0); 
+  }
+  
+  FILE* f2;
+  printf("Enter the filename to open for writing: "); 
+  scanf("%s", fn);
+
+  f2 = fopen(fn, "w");
+  
+  if (f2 == NULL) 
+  { 
+      printf("Cannot open file %s \n", fn); 
+      exit(0); 
+  } 
+
+  c = fgetc(f1);
+  while( c != EOF) {
+    fputc(c, f2);
+    c = fgetc(f1);
+  }
+
+  printf("Contents copied to %s", fn);
+  fclose(f1);
+  fclose(f2);
+  return 0;
+}
