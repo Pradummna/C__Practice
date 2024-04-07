@@ -1,0 +1,121 @@
+// 1. Creating a file
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  FILE* ptr;
+  ptr = fopen("./index.txt", "w");
+  if(ptr == NULL) {
+    printf("An error has occured while creating file");
+    exit(1);
+  }
+  fclose(ptr);
+  printf("File succesfully created");
+  return 0;
+}
+
+// 2. Write to a txt file
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  FILE* ptr;
+  ptr = fopen("./file.txt", "w+");
+
+  if(ptr == NULL) {
+    printf("Error in creating or opening the file\n");
+    exit(1); 
+  }
+
+  char str[200];
+  printf("Enter string data which will be stored in file:\n");
+  fgets(str, sizeof(str), stdin);
+  fputs(str, ptr);
+
+  fclose(ptr);
+
+  printf("\nData has successfully entered into your file\n");
+  return 0;
+}
+
+// 3. Write to a binary file
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Num {
+  int n1, n2;
+};
+
+int main() {
+  struct Num n;
+  int i;
+
+  FILE* ptr;
+  ptr = fopen("./file.bin", "wb");
+
+  if(ptr == NULL) {
+    printf("Error! In creating file");
+    exit(1);
+  }
+
+  for(i=1; i<10; i++) {
+    n.n1 = i;
+    n.n2 = 12+i;
+
+    fwrite(&n, sizeof(struct Num), 1, ptr);
+  }
+  fclose(ptr);
+  printf("Data in written in Binary File\n\n");
+  return 0;
+}
+
+// 4. Read from a txt file
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char str[100];
+    FILE *ptr;
+    ptr = fopen("./file.txt", "r");
+
+    if (ptr == NULL) {
+        printf("Error! In opening file\n");
+        exit(1);
+    }
+
+    if (fgets(str, 100, ptr) != NULL) {
+        printf("Content read from the file\n\n");
+	puts(str);
+    } else {
+        printf("The file is empty.\n");
+    }
+    fclose(ptr);
+    return 0;
+}
+
+// 5. Read from a Binary File
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Num {
+  int n1, n2;
+};
+
+int main() {
+  FILE* ptr;
+  struct Num n;
+  int i;
+  ptr = fopen("file.bin", "rb");
+  
+  if (ptr == NULL) { 
+    printf("Error! opening file"); 
+    exit(1); 
+  } 
+  
+  for (i = 1; i < 10; i++) { 
+    fread(&n, sizeof(struct Num), 1, ptr); 
+    printf("n1: %d\tn2: %d\n", n.n1, n.n2); 
+  }  
+  fclose(ptr); 
+  return 0;
+}
