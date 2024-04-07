@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<time.h>
+
+#define CST (+8)
+#define IND (+5)
+#define UTC 0
+#define ARG (-3)
+
+int main() {
+    time_t currentTime; // Declare a time_t object to store current time
+    struct tm* ptime; // Declare a pointer to a tm structure to store time components
+
+    time(&currentTime); // Get the current time
+    ptime = gmtime(&currentTime); // Convert the current time to UTC/GMT time and store it in ptime
+
+    printf("Current Time:\n");
+    printf("Beijing (China): %2d:%02d:%02d\n", (ptime->tm_hour + CST) % 24, ptime->tm_min, ptime->tm_sec);
+    printf("Delhi (India): %2d:%02d:%02d\n", (ptime->tm_hour + IND) % 24, ptime->tm_min, ptime->tm_sec);
+    printf("Monrovia (Liberia): %2d:%02d:%02d\n", (ptime->tm_hour + UTC) % 24, ptime->tm_min, ptime->tm_sec); 
+    printf("Buenos Aires (Argentina): %2d:%02d:%02d\n", (ptime->tm_hour + ARG) % 24, ptime->tm_min, ptime->tm_sec); 
+
+    return 0;
+}
