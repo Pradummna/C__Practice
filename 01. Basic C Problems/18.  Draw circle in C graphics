@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<graphics.h>
+#include<conio.h>
+
+int main() {
+  int x, y, radius;
+  
+  printf("Enter the values of x, y, and radius: ");
+  scanf("%d %d %d", &x, &y, &radius);
+
+  int gd = DETECT, gm;
+  initgraph(&gd, &gm, ""); // Initialize graphics mode
+
+  // Draw a circle
+  circle(x, y, radius);
+
+  getch(); // Wait for a key press
+  closegraph(); // Close graphics mode
+
+  return 0;
+}
