@@ -1,0 +1,156 @@
+// Function in Dynamic Memory Allocation
+// malloc() memory allocation
+// calloc() continuous allocation
+// free()
+// realloc() re-allocation
+
+// 1. Allocate memory to store 5 prices
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  float *ptr;
+  ptr = (float *) malloc(5 * sizeof(float));
+
+  printf("Enter floating values\n");
+
+  for(int i = 0; i < 5; i++) {
+    printf("%d value: ",i+1);
+    scanf("%f",&ptr[i]);
+  } printf("\n");
+
+  for(int j = 0; j < 5; j++) {
+    printf("%.02f",ptr[j]);
+    printf("\n");
+  }
+  return 0;
+}
+
+// 2. calloc()
+// This program will print five zeros
+// Whenever we create memory using calloc function it can store some random values like if the type is int value should be 0 or if type is float value should be 0.0
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  int *ptr;
+  ptr = (int *) calloc(5, sizeof(int));
+
+  for(int i = 0; i< 5; i++) {
+    printf("%d ", ptr[i]);    
+  }
+}
+
+// Allocate memory of size n, where n is entered by the user
+#include<stdio.h>
+#include<stdlib.h> 
+
+int main() {
+  int *ptr;
+  int n;
+  printf("Enter n: ");
+  scanf("%d",&n);
+
+  ptr = (int *) calloc(n, sizeof(int));
+
+  for(int i = 0; i < 4; i++) {
+    printf("%d\n", ptr[i]);
+  }
+  return 0;
+}
+
+// free() it is use to free memory that is allocated using malloc & calloc
+
+// realloc() 
+// reallocate (increase or decrease) memory using the same pointer & size.
+// Ex = ptr = realloc(ptr, newSize);
+
+// 3. Allocate memory for 5 numbers. Then dynamically increase it to 8 numbers
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  int *ptr;
+  ptr = (int *) malloc(5 * sizeof(int));
+
+  for(int i = 0; i < 5; i++) {
+  printf("Enter value %d: ", i+1);
+    scanf("%d",&ptr[i]);
+  }
+
+  for(int j = 0; j < 5; j++) {
+    printf("%d", ptr[j]);
+    printf("\n");
+  }
+
+  ptr = realloc(ptr, 8);
+
+  for(int i = 0; i < 8; i++) {
+  printf("Enter value %d: ", i+1);
+    scanf("%d",&ptr[i]);
+  }
+
+  for(int j = 0; j < 8; j++) {
+      printf("%d", ptr[j]);
+      printf("\n");
+    }
+  return 0;
+}
+
+// 4. Create an aray of size 5(using calloc)& enter it's values from the user
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  int *ptr;
+  ptr = (int *) calloc(5, sizeof(int));
+
+  for(int i = 0; i < 5; i++) {
+    printf("Enter value %d: ", i+1);
+    scanf("%d", &ptr[i]);
+  }
+
+  for(int i = 0; i < 5; i++) {
+    printf("%d ",ptr[i]);
+  }
+  free(ptr);
+  return 0;
+}
+
+// 5. Allocate memory to store first 5 odd numbers, then reallocate it to store first 6 even number
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+  int *ptr;
+  ptr = (int *) calloc(5, sizeof(int));
+  int odd = -1;
+
+  for(int i = 0; i < 5; i++) {
+     odd += 2;
+     ptr[i] = odd;
+  }
+
+  printf("First 5 odd numbers:\n");
+  for(int j = 0; j < 5; j++) {
+    printf("Odd no %d: %d", j + 1, ptr[j]);
+   printf("\n");
+  }
+
+  ptr = realloc(ptr, 6);
+
+  int even = 0;
+  for(int k = 0; k < 6; k++) {
+     even += 2;
+     ptr[k] = even;
+  }
+
+  printf("\nFirst 6 even numbers:\n");
+  for(int l = 0; l < 6; l++) {
+    printf("Even no %d: %d", l + 1, ptr[l]);
+    printf("\n");
+  }
+  free(ptr);
+  return 0;
+}
